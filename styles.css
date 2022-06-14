@@ -74,7 +74,7 @@ main {
 footer {
 	grid-area: footer;
 	text-align: center;
-	color: hsl(0, 0%, 70%);
-	background-color: hsl(0, 0%, 97%);
+	background-color: hsl(0, 0%, 85%);
+	opacity: 0.25;
 	padding: 0.5rem;
 }
