@@ -80,6 +80,7 @@ ol, ul {
 
 li {
 	display: flex;
+	align-items: center;
 	gap: 0.5rem;
 	font-size: 1.2rem;
 	margin: 0.5rem 0;
@@ -90,7 +91,14 @@ li img {
 	width: 1.5rem;
 }
 
+li .due {
+	font-size: 0.9rem;
+	color: hsl(120, 43%, 45%);
+	margin-left: auto;
+}
+
 #tasks li {
+	display: flex;
 	padding: 0.7rem;
 	border: 1px solid hsl(0, 0%, 75%);
 	border-radius: 0.5rem;
@@ -99,11 +107,6 @@ li img {
 input[type=checkbox]:checked + label {
   text-decoration: line-through;
 	color: hsl(0, 0%, 60%);
-}
-
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
 }
 
 #sidebar {
@@ -119,13 +122,12 @@ table {
 }
 
 .add {
+	font-size: 1.2rem;
+	text-align: center;
 	border-top: 0.1rem solid hsl(0, 0%, 80%);
 	margin-top: auto;
-	padding: 1rem 1.3rem;
-}
-
-a {
 	cursor: pointer;
+	padding: 1.5rem;
 }
 
 main {
