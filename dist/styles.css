@@ -147,13 +147,22 @@ input[type=checkbox]:checked + label {
 	padding: 2rem;
 }
 
-.add {
+#add {
 	font-size: 1.2rem;
 	text-align: center;
 	border-top: 0.1rem solid hsl(0, 0%, 80%);
 	margin-top: auto;
 	cursor: pointer;
 	padding: 1.5rem;
+}
+
+#new {
+	height: 2.5rem;
+	width: 2.5rem;
+	font-size: 1.5rem;
+	margin-top: 1rem;
+	color: gray;
+	border: none;
 }
 
 main {
