@@ -133,15 +133,10 @@ main {
 
 #tasks li {
 	display: flex;
+	height: 2.8rem;
 	padding: 0.7rem;
 	border: 1px solid hsl(0, 0%, 75%);
 	border-radius: 0.5rem;
-}
-
-li .due {
-	font-size: 0.9rem;
-	color: hsl(120, 43%, 45%);
-	margin-left: auto;
 }
 
 label {
@@ -164,6 +159,25 @@ label:hover + .edit {
 input[type=checkbox]:checked + label {
 	text-decoration: line-through;
 	color: hsl(0, 0%, 60%);
+}
+
+li .edit {
+	margin-right: auto;
+}
+
+li .due {
+	font-size: 0.9rem;
+	color: hsl(120, 43%, 45%);
+}
+
+li .delete {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.5rem;
+	height: 2rem;
+	color: gray;
+	cursor: pointer;
 }
 
 #add {
