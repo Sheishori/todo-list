@@ -143,6 +143,10 @@ input[type=checkbox]:checked + label {
 	border-right: 0.1rem solid hsl(0, 0%, 70%);
 }
 
+.project {
+	cursor: pointer;
+}
+
 .wrapper {
 	padding: 2rem;
 }
