@@ -63,14 +63,89 @@ h2 {
 	margin-right: 0.5rem;
 }
 
-#current-project {
+ol, ul {
+	list-style: none;
+}
+
+li {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-size: 1.2rem;
+	margin: 0.5rem 0;
+}
+
+/* Sidebar area */
+
+#sidebar {
+	grid-area: sidebar;
+	display: flex;
+	flex-direction: column;
+	background-color: hsl(0, 0%, 95%);
+	border-right: 0.1rem solid hsl(0, 0%, 70%);
+}
+
+.wrapper {
+	padding: 2rem;
+}
+
+.separator {
+	height: 0.1rem;
+	background-color: hsl(0, 0%, 80%);
+	margin: 1rem;
+	margin-bottom: 2rem;
+}
+
+#projects li {
+	margin: 1rem 0;
+}
+
+
+#projects li img {
+	width: 1.5rem;
+}
+
+.list {
+	cursor: pointer;
+}
+
+#new-list {
+	font-size: 1.2rem;
+	text-align: center;
+	border-top: 0.1rem solid hsl(0, 0%, 80%);
+	margin-top: auto;
+	cursor: pointer;
+	padding: 1.5rem;
+}
+
+/* Open list area */
+
+main {
+	grid-area: main;
+	padding: 3rem;
+}
+
+#current-list {
 	display: flex;
 	align-items: center;
 	margin-bottom: 2rem;
 }
 
-#current-project img {
-	height: 1.3rem;
+#tasks li {
+	display: flex;
+	padding: 0.7rem;
+	border: 1px solid hsl(0, 0%, 75%);
+	border-radius: 0.5rem;
+}
+
+li .due {
+	font-size: 0.9rem;
+	color: hsl(120, 43%, 45%);
+	margin-left: auto;
+}
+
+label {
+	cursor: text;
 }
 
 h2:hover + .edit,
@@ -86,92 +161,18 @@ label:hover + .edit {
 	height: 1rem;
 }
 
-label {
-	cursor: text;
-}
-
-.separator {
-	height: 0.1rem;
-	background-color: hsl(0, 0%, 80%);
-	margin: 1rem;
-	margin-bottom: 2rem;
-}
-
-ol, ul {
-	list-style: none;
-}
-
-#projects li {
-	margin: 1rem 0;
-}
-
-li {
-	display: flex;
-	align-items: center;
-	gap: 0.5rem;
-	font-size: 1.2rem;
-	margin: 0.5rem 0;
-}
-
-li img {
-	width: 1.5rem;
-}
-
-li .due {
-	font-size: 0.9rem;
-	color: hsl(120, 43%, 45%);
-	margin-left: auto;
-}
-
-#tasks li {
-	display: flex;
-	padding: 0.7rem;
-	border: 1px solid hsl(0, 0%, 75%);
-	border-radius: 0.5rem;
-}
-
 input[type=checkbox]:checked + label {
 	text-decoration: line-through;
 	color: hsl(0, 0%, 60%);
 }
 
-#sidebar {
-	grid-area: sidebar;
-	display: flex;
-	flex-direction: column;
-	background-color: hsl(0, 0%, 95%);
-	border-right: 0.1rem solid hsl(0, 0%, 70%);
-}
-
-.project {
-	cursor: pointer;
-}
-
-.wrapper {
-	padding: 2rem;
-}
-
 #add {
-	font-size: 1.2rem;
-	text-align: center;
-	border-top: 0.1rem solid hsl(0, 0%, 80%);
-	margin-top: auto;
-	cursor: pointer;
-	padding: 1.5rem;
-}
-
-#new {
 	height: 2.5rem;
 	width: 2.5rem;
 	font-size: 1.5rem;
 	margin-top: 1rem;
 	color: gray;
 	border: none;
-}
-
-main {
-	grid-area: main;
-	padding: 3rem;
 }
 
 footer {
