@@ -139,6 +139,14 @@ main {
 	border-radius: 0.5rem;
 }
 
+#tasks .urgent {
+	border: 1px solid red;
+}
+
+#tasks .high {
+	border: 1px solid orange;
+}
+
 label {
 	cursor: text;
 }
