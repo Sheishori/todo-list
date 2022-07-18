@@ -1,5 +1,35 @@
 taskFormContainer = document.querySelector("#new-task");
 taskForm = taskFormContainer.querySelector("form");
+tasksList = document.querySelector("#tasks");
+tasks = tasksList.querySelectorAll("li");
+
+function newToDo(title, desc, dueDate, priority) {
+	li = document.createElement("li");
+	input = document.createElement("input");
+	label = document.createElement("label");
+	edit = document.createElement("div");
+	due = document.createElement("div");
+	del = document.createElement("div");
+
+	input.type = "checkbox";
+	input.name = title;
+	label.setAttribute("for", title);
+	label.textContent = title;
+	edit.classList.add("edit");
+	due.classList.add("due");
+	if (dueDate) due.textContent = "Due " + dueDate;
+	del.classList.add("delete");
+	del.textContent = "X";
+
+	if (priority === "Urgent") {
+		li.classList.add("urgent");
+	} else if (priority === "High") {
+		li.classList.add("high");
+	};
+
+	li.append(input, label, edit, due, del);
+	tasksList.appendChild(li);
+};
 
 newButton = document.querySelector("#new-task-button");
 cancelButton = taskForm.querySelector('.cancel');
@@ -16,6 +46,10 @@ cancelButton.addEventListener("click", (e) => {
 
 taskForm.addEventListener("submit", (e) => {
 	e.preventDefault();
+	newToDo(taskForm.querySelector('#title').value,
+					taskForm.querySelector('#desc').value,
+					taskForm.querySelector('#due').value,
+					taskForm.querySelector('#priority').value);
 	taskFormContainer.style.display = 'none';
 	taskForm.reset();
 });
