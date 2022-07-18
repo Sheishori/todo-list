@@ -109,7 +109,7 @@ li {
 	cursor: pointer;
 }
 
-#new-list {
+#new-list-button {
 	font-size: 1.2rem;
 	text-align: center;
 	border-top: 0.1rem solid hsl(0, 0%, 80%);
@@ -180,13 +180,45 @@ li .delete {
 	cursor: pointer;
 }
 
-#add {
+#new-item-button {
 	height: 2.5rem;
 	width: 2.5rem;
 	font-size: 1.5rem;
 	margin-top: 1rem;
 	color: gray;
 	border: none;
+}
+
+#new-list,
+#new-task {
+	display: none;
+}
+
+.container {
+	position: absolute;
+	min-height: 100vh;
+	min-width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: hsl(0, 0%, 0%, 0.3);
+}
+
+form {
+	text-align: center;
+	padding: 2rem;
+	background-color: white;
+}
+
+form li {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin: 1rem;
+}
+
+label {
+	font-size: 1rem;
 }
 
 footer {
