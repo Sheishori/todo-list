@@ -47,6 +47,32 @@ function projects() {
 	allProjects.addProject(project("Work", "orange"));
 	
 	updateProjectsList();
+
+
+	const projectFormContainer = document.querySelector("#new-project");
+	const projectForm = projectFormContainer.querySelector("form");
+	const newButton = document.querySelector("#new-project-button");
+	const cancelButton = projectForm.querySelector(".cancel");
+
+	newButton.addEventListener("click", () => {
+		projectFormContainer.style.display = 'inherit';
+	});
+
+	cancelButton.addEventListener("click", (e) => {
+		e.preventDefault();
+		projectFormContainer.style.display = 'none';
+		projectForm.reset();
+	});
+	
+	projectForm.addEventListener("submit", (e) => {
+		e.preventDefault();
+		allProjects.addProject(project(
+			projectForm.querySelector('#name').value,
+			projectForm.querySelector('#color').value));
+		projectFormContainer.style.display = 'none';
+		projectForm.reset();
+		updateProjectsList();
+	});
 };
 
 export { projects };
