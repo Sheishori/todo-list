@@ -36,7 +36,7 @@ function projects() {
 		color.textContent = "●";
 		color.style.color = project.color;
 		
-		name.classList.add("list");
+		name.classList.add("project");
 		name.textContent = project.name;
 	
 		li.append(color, name);
