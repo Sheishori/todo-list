@@ -100,11 +100,11 @@ li {
 	margin: 1rem 0;
 }
 
-.list {
+.project {
 	cursor: pointer;
 }
 
-#new-list-button {
+#new-project-button {
 	font-size: 1.2rem;
 	text-align: center;
 	border-top: 0.1rem solid hsl(0, 0%, 80%);
@@ -113,14 +113,14 @@ li {
 	padding: 1.5rem;
 }
 
-/* Open list area */
+/* Open project area */
 
 main {
 	grid-area: main;
 	padding: 3rem;
 }
 
-#current-list {
+#current-project {
 	display: flex;
 	align-items: center;
 	margin-bottom: 2rem;
@@ -192,7 +192,7 @@ li .delete {
 	border: none;
 }
 
-#new-list,
+#new-project,
 #new-task {
 	display: none;
 }
