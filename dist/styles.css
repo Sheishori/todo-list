@@ -101,8 +101,8 @@ li {
 }
 
 
-#projects li img {
-	width: 1.5rem;
+#projects li .color {
+	font-size: 0.8rem;
 }
 
 .list {

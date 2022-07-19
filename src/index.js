@@ -32,19 +32,20 @@ function updateProjectsList() {
 
 function generateProject(project) {
 	let li = document.createElement("li");
-	let img = document.createElement("img");
+	let color = document.createElement("div");
 	let name = document.createElement("div");
-	img.src = "./list.png";
-	img.alt = "📝";
+	color.textContent = "●";
+	color.style.color = project.color;
+	color.classList.add("color");
 	name.textContent = project.name;
 	name.classList.add("list");
 
-	li.append(img, name);
+	li.append(color, name);
 	projectsList.appendChild(li);
 };
 
-let list1 = project("Home", "gray");
-let list2 = project("Work", "gray");
+let list1 = project("Home", "blue");
+let list2 = project("Work", "orange");
 allProjects.addProject(list1);
 allProjects.addProject(list2);
 
