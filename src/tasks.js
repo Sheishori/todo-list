@@ -1,4 +1,4 @@
-function addTask() {
+function tasks() {
 	const taskFormContainer = document.querySelector("#new-task");
 	const taskForm = taskFormContainer.querySelector("form");
 	const tasksList = document.querySelector("#tasks");
@@ -56,4 +56,4 @@ function addTask() {
 	});
 };
 
-export { addTask };
+export { tasks };

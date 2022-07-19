@@ -1,6 +1,5 @@
 import { projects } from "./projects"
-import { addTask } from "./addTask";
+import { tasks } from "./tasks";
 
 projects();
-addTask();
-
+tasks();
