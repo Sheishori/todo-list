@@ -1,10 +1,33 @@
 function tasks() {
-	const taskFormContainer = document.querySelector("#new-task");
-	const taskForm = taskFormContainer.querySelector("form");
 	const tasksList = document.querySelector("#tasks");
-	const tasks = tasksList.querySelectorAll("li");
 
-	function newToDo(title, desc, dueDate, priority) {
+	const task = (title, desc, due, priority) => {
+		return {title, desc, due, priority};
+	};
+
+	const allTasks = (() => {
+		let tasks = [];
+	
+		function getTasks() {
+			return tasks;
+		};
+	
+		function addTask(newTask) {
+			tasks.push(newTask);
+		};
+	
+		return {getTasks, addTask};
+	})();
+
+	function updateTasksList() {
+		tasksList.textContent = "";
+		let tasks = allTasks.getTasks();
+		for (let task in tasks) {
+			generateTask(tasks[task]);
+		};
+	};
+
+	function generateTask(task) {
 		let li = document.createElement("li");
 		let input = document.createElement("input");
 		let label = document.createElement("label");
@@ -13,18 +36,18 @@ function tasks() {
 		let del = document.createElement("div");
 
 		input.type = "checkbox";
-		input.name = title;
-		label.setAttribute("for", title);
-		label.textContent = title;
+		input.name = task.title;
+		label.setAttribute("for", task.title);
+		label.textContent = task.title;
 		edit.classList.add("edit");
 		due.classList.add("due");
-		if (dueDate) due.textContent = "Due " + dueDate;
+		if (task.due) due.textContent = "Due " + task.due;
 		del.classList.add("delete");
 		del.textContent = "X";
 
-		if (priority === "Urgent") {
+		if (task.priority === "Urgent") {
 			li.classList.add("urgent");
-		} else if (priority === "High") {
+		} else if (task.priority === "High") {
 			li.classList.add("high");
 		};
 
@@ -32,6 +55,12 @@ function tasks() {
 		tasksList.appendChild(li);
 	};
 
+	allTasks.addTask(task("Buy milk", "", "August 10", "Normal"));
+
+	updateTasksList();
+
+	const taskFormContainer = document.querySelector("#new-task");
+	const taskForm = taskFormContainer.querySelector("form");
 	const newButton = document.querySelector("#new-task-button");
 	const cancelButton = taskForm.querySelector('.cancel');
 
@@ -47,12 +76,14 @@ function tasks() {
 
 	taskForm.addEventListener("submit", (e) => {
 		e.preventDefault();
-		newToDo(taskForm.querySelector('#title').value,
-						taskForm.querySelector('#desc').value,
-						taskForm.querySelector('#due').value,
-						taskForm.querySelector('#priority').value);
+		allTasks.addTask(task(
+			taskForm.querySelector('#title').value,
+			taskForm.querySelector('#desc').value,
+			taskForm.querySelector('#due').value,
+			taskForm.querySelector('#priority').value));
 		taskFormContainer.style.display = 'none';
 		taskForm.reset();
+		updateTasksList();
 	});
 };
 
