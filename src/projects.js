@@ -1,21 +1,58 @@
 const projects = (() => {
-	let projects = [{
-		name: "My list",
-		color: "Gray"
-	}];
+	let projects = [
+		{
+			name: "My list",
+			color: "Gray",
+			tasks: [{
+				title: "Fill to-do list",
+				desc: "",
+				due: "",
+				priority: "normal"
+			}]
+		},
+		{
+			name: "My list 2",
+			color: "red",
+			tasks: [{
+				title: "Eat bread",
+				desc: "",
+				due: "",
+				priority: "normal"
+			}]
+		}
+	];
+
+	let activeProject = 0;
+
+	function getActiveProject() {
+		return activeProject;
+	}
+
+	function setgetActiveProject(project) {
+		activeProject = project;
+	}
 
 	function getProjects() {
 		return projects;
 	};
 
+	function getTasks() {
+		return projects[activeProject].tasks;
+	}
+
+	function setTasks(tasks) {
+		projects[activeProject].tasks = tasks;
+	}
+
 	function addProject(name, color) {
 		const project = (name, color) => {
-			return {name, color};
+			let tasks = [];
+			return {name, color, tasks};
 		};
 		projects.push(project(name, color));
 	};
 
-	return {getProjects, addProject};
+	return {getActiveProject, setgetActiveProject, getProjects, getTasks, setTasks, addProject};
 })();
 
 export { projects };

@@ -4,16 +4,28 @@ import { tasks } from "./tasks";
 const render = (() => {
 	const projectsList = document.querySelector("#projects");
 	const tasksList = document.querySelector("#tasks");
+	
+	function bindProjects() {
+		let domProjects = document.querySelectorAll(".project");
+		domProjects.forEach(project => {
+			project.addEventListener("click", function(e) {
+				projects.setgetActiveProject(this.classList[1]);
+				tasks.setTasks();
+				render.updateTasksList();
+			});
+		});
+	};
 
 	function updateProjectsList() {
 		projectsList.textContent = "";
 		let list = projects.getProjects();
-		for (let project in list) {
-			_generateProject(list[project]);
+		for (let index in list) {
+			_generateProject(index, list[index]);
 		};
+		bindProjects();
 	};
 	
-	function _generateProject(project) {
+	function _generateProject(index, project) {
 		let li = document.createElement("li");
 		let color = document.createElement("div");
 		let name = document.createElement("div");
@@ -23,6 +35,7 @@ const render = (() => {
 		color.style.color = project.color;
 		
 		name.classList.add("project");
+		name.classList.add(index);
 		name.textContent = project.name;
 	
 		li.append(color, name);

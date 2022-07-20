@@ -1,10 +1,11 @@
+import { projects } from "./projects"
+
 const tasks = (() => {
-	let tasks = [{
-		title: "Fill to-do list",
-		desc: "",
-		due: "",
-		priority: "normal"
-	}];
+	let tasks = [];
+
+	function setTasks() {
+		tasks = projects.getTasks();
+	};
 
 	function getTasks() {
 		return tasks;
@@ -15,9 +16,12 @@ const tasks = (() => {
 			return {title, desc, due, priority};
 		};
 		tasks.push(task(title, desc, due, priority));
+		projects.setTasks(tasks);
 	};
 
-	return {getTasks, addTask};
+	setTasks();
+
+	return {setTasks, getTasks, addTask};
 })();
 
 export { tasks };
