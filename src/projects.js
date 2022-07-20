@@ -1,30 +1,18 @@
-import { render } from "./render";
-import { forms } from "./forms";
+const projects = (() => {
+	let projects = [];
 
-function projects() {
-
-	const project = (name, color) => {
-		return {name, color};
+	function getProjects() {
+		return projects;
 	};
 
-	const allProjects = (() => {
-		let projects = [];
-	
-		function getProjects() {
-			return projects;
+	function addProject(name, color) {
+		const project = (name, color) => {
+			return {name, color};
 		};
-	
-		function addProject(newProject) {
-			projects.push(newProject);
-		};
-	
-		return {getProjects, addProject};
-	})();
-	
-	allProjects.addProject(project("Home", "blue"));
-	allProjects.addProject(project("Work", "orange"));
-	
-	render().updateProjectsList(allProjects.getProjects());
-};
+		projects.push(project(name, color));
+	};
+
+	return {getProjects, addProject};
+})();
 
 export { projects };

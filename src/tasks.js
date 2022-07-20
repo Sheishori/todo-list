@@ -1,29 +1,18 @@
-import { render } from "./render";
-import { forms } from "./forms";
+const tasks = (() => {
+	let tasks = [];
 
-function tasks() {
-
-	const task = (title, desc, due, priority) => {
-		return {title, desc, due, priority};
+	function getTasks() {
+		return tasks;
 	};
 
-	const allTasks = (() => {
-		let tasks = [];
-	
-		function getTasks() {
-			return tasks;
+	function addTask(title, desc, due, priority) {
+		const task = (title, desc, due, priority) => {
+			return {title, desc, due, priority};
 		};
-	
-		function addTask(newTask) {
-			tasks.push(newTask);
-		};
-	
-		return {getTasks, addTask};
-	})();
+		tasks.push(task(title, desc, due, priority));
+	};
 
-	allTasks.addTask(task("Buy milk", "", "August 10", "Normal"));
-
-	render().updateTasksList(allTasks.getTasks());
-};
+	return {getTasks, addTask};
+})();
 
 export { tasks };
