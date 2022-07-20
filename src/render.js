@@ -1,4 +1,4 @@
-function render() {
+const render = (() => {
 	const projectsList = document.querySelector("#projects");
 	const tasksList = document.querySelector("#tasks");
 
@@ -61,6 +61,6 @@ function render() {
 	};
 
 	return {updateProjectsList, updateTasksList};
-};
+})();
 
 export { render };

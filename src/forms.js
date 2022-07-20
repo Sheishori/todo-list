@@ -1,7 +1,8 @@
 import { projects } from "./projects"
 import { tasks } from "./tasks";
+import { render } from "./render";
 
-function forms() {
+const forms = (() => {
 	const projectFormContainer = document.querySelector("#new-project");
 	const projectForm = projectFormContainer.querySelector("form");
 	const newProjectButton = document.querySelector("#new-project-button");
@@ -23,13 +24,12 @@ function forms() {
 	
 	projectForm.addEventListener("submit", (e) => {
 		e.preventDefault();
-		allProjects.addProject(project(
+		projects.addProject(
 			projectForm.querySelector('#name').value,
-			projectForm.querySelector('#color').value));
+			projectForm.querySelector('#color').value);
 		projectFormContainer.style.display = 'none';
 		projectForm.reset();
-		render().updateProjectsList(allProjects.getProjects());
-		updateProjectsList();
+		render.updateProjectsList(projects.getProjects());
 	});
 
 	newTaskButton.addEventListener("click", () => {
@@ -44,15 +44,15 @@ function forms() {
 
 	taskForm.addEventListener("submit", (e) => {
 		e.preventDefault();
-		allTasks.addTask(task(
+		tasks.addTask(
 			taskForm.querySelector('#title').value,
 			taskForm.querySelector('#desc').value,
 			taskForm.querySelector('#due').value,
-			taskForm.querySelector('#priority').value));
+			taskForm.querySelector('#priority').value);
 		taskFormContainer.style.display = 'none';
 		taskForm.reset();
-		render().updateTasksList(allTasks.getTasks());
+		render.updateTasksList(tasks.getTasks());
 	});
-};
+})();
 
 export { forms };
