@@ -26,7 +26,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _projects__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./projects */ \"./src/projects.js\");\n/* harmony import */ var _tasks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tasks */ \"./src/tasks.js\");\n/* harmony import */ var _forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./forms */ \"./src/forms.js\");\n/* harmony import */ var _render__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./render */ \"./src/render.js\");\n\n\n\n\n\n_projects__WEBPACK_IMPORTED_MODULE_0__.projects.addProject(\"Home\", \"blue\");\n_projects__WEBPACK_IMPORTED_MODULE_0__.projects.addProject(\"Work\", \"orange\");\n_render__WEBPACK_IMPORTED_MODULE_3__.render.updateProjectsList(_projects__WEBPACK_IMPORTED_MODULE_0__.projects.getProjects());\n_tasks__WEBPACK_IMPORTED_MODULE_1__.tasks.addTask((\"Buy milk\", \"\", \"August 10\", \"Normal\"));\n_render__WEBPACK_IMPORTED_MODULE_3__.render.updateTasksList(_tasks__WEBPACK_IMPORTED_MODULE_1__.tasks.getTasks());\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _projects__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./projects */ \"./src/projects.js\");\n/* harmony import */ var _tasks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tasks */ \"./src/tasks.js\");\n/* harmony import */ var _render__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./render */ \"./src/render.js\");\n/* harmony import */ var _forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./forms */ \"./src/forms.js\");\n\n\n\n\n\n_render__WEBPACK_IMPORTED_MODULE_2__.render.updateProjectsList(_projects__WEBPACK_IMPORTED_MODULE_0__.projects.getProjects());\n_render__WEBPACK_IMPORTED_MODULE_2__.render.updateTasksList(_tasks__WEBPACK_IMPORTED_MODULE_1__.tasks.getTasks());\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
 
 /***/ }),
 
@@ -36,7 +36,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _pro
   \*************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"projects\": () => (/* binding */ projects)\n/* harmony export */ });\nconst projects = (() => {\n\tlet projects = [];\n\n\tfunction getProjects() {\n\t\treturn projects;\n\t};\n\n\tfunction addProject(name, color) {\n\t\tconst project = (name, color) => {\n\t\t\treturn {name, color};\n\t\t};\n\t\tprojects.push(project(name, color));\n\t};\n\n\treturn {getProjects, addProject};\n})();\n\n\n\n//# sourceURL=webpack://todo-list/./src/projects.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"projects\": () => (/* binding */ projects)\n/* harmony export */ });\nconst projects = (() => {\n\tlet projects = [{\n\t\tname: \"My list\",\n\t\tcolor: \"Gray\"\n\t}];\n\n\tfunction getProjects() {\n\t\treturn projects;\n\t};\n\n\tfunction addProject(name, color) {\n\t\tconst project = (name, color) => {\n\t\t\treturn {name, color};\n\t\t};\n\t\tprojects.push(project(name, color));\n\t};\n\n\treturn {getProjects, addProject};\n})();\n\n\n\n//# sourceURL=webpack://todo-list/./src/projects.js?");
 
 /***/ }),
 
@@ -56,7 +56,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"tasks\": () => (/* binding */ tasks)\n/* harmony export */ });\nconst tasks = (() => {\n\tlet tasks = [];\n\n\tfunction getTasks() {\n\t\treturn tasks;\n\t};\n\n\tfunction addTask(title, desc, due, priority) {\n\t\tconst task = (title, desc, due, priority) => {\n\t\t\treturn {title, desc, due, priority};\n\t\t};\n\t\ttasks.push(task(title, desc, due, priority));\n\t};\n\n\treturn {getTasks, addTask};\n})();\n\n\n\n//# sourceURL=webpack://todo-list/./src/tasks.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"tasks\": () => (/* binding */ tasks)\n/* harmony export */ });\nconst tasks = (() => {\n\tlet tasks = [{\n\t\ttitle: \"Fill to-do list\",\n\t\tdesc: \"\",\n\t\tdue: \"\",\n\t\tpriority: \"normal\"\n\t}];\n\n\tfunction getTasks() {\n\t\treturn tasks;\n\t};\n\n\tfunction addTask(title, desc, due, priority) {\n\t\tconst task = (title, desc, due, priority) => {\n\t\t\treturn {title, desc, due, priority};\n\t\t};\n\t\ttasks.push(task(title, desc, due, priority));\n\t};\n\n\treturn {getTasks, addTask};\n})();\n\n\n\n//# sourceURL=webpack://todo-list/./src/tasks.js?");
 
 /***/ })
 
