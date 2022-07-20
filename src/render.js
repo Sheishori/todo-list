@@ -1,9 +1,13 @@
+import { projects } from "./projects"
+import { tasks } from "./tasks";
+
 const render = (() => {
 	const projectsList = document.querySelector("#projects");
 	const tasksList = document.querySelector("#tasks");
 
-	function updateProjectsList(list) {
+	function updateProjectsList() {
 		projectsList.textContent = "";
+		let list = projects.getProjects();
 		for (let project in list) {
 			_generateProject(list[project]);
 		};
@@ -25,8 +29,9 @@ const render = (() => {
 		projectsList.appendChild(li);
 	};
 
-	function updateTasksList(list) {
+	function updateTasksList() {
 		tasksList.textContent = "";
+		let list = tasks.getTasks();
 		for (let task in list) {
 			_generateTask(list[task]);
 		};

@@ -29,7 +29,7 @@ const forms = (() => {
 			projectForm.querySelector('#color').value);
 		projectFormContainer.style.display = 'none';
 		projectForm.reset();
-		render.updateProjectsList(projects.getProjects());
+		render.updateProjectsList();
 	});
 
 	newTaskButton.addEventListener("click", () => {
@@ -51,7 +51,7 @@ const forms = (() => {
 			taskForm.querySelector('#priority').value);
 		taskFormContainer.style.display = 'none';
 		taskForm.reset();
-		render.updateTasksList(tasks.getTasks());
+		render.updateTasksList();
 	});
 })();
 
