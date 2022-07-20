@@ -1,5 +1,10 @@
 const tasks = (() => {
-	let tasks = [];
+	let tasks = [{
+		title: "Fill to-do list",
+		desc: "",
+		due: "",
+		priority: "normal"
+	}];
 
 	function getTasks() {
 		return tasks;

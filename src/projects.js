@@ -1,5 +1,8 @@
 const projects = (() => {
-	let projects = [];
+	let projects = [{
+		name: "My list",
+		color: "Gray"
+	}];
 
 	function getProjects() {
 		return projects;
