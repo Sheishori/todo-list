@@ -1,5 +1,6 @@
+import { render } from "./render";
+
 function projects() {
-	const projectsList = document.querySelector("#projects");
 
 	const project = (name, color) => {
 		return {name, color};
@@ -19,35 +20,10 @@ function projects() {
 		return {getProjects, addProject};
 	})();
 	
-	function updateProjectsList() {
-		projectsList.textContent = "";
-		let projects = allProjects.getProjects();
-		for (let project in projects) {
-			generateProject(projects[project]);
-		};
-	};
-	
-	function generateProject(project) {
-		let li = document.createElement("li");
-		let color = document.createElement("div");
-		let name = document.createElement("div");
-
-		color.classList.add("color");
-		color.textContent = "●";
-		color.style.color = project.color;
-		
-		name.classList.add("project");
-		name.textContent = project.name;
-	
-		li.append(color, name);
-		projectsList.appendChild(li);
-	};
-	
 	allProjects.addProject(project("Home", "blue"));
 	allProjects.addProject(project("Work", "orange"));
 	
-	updateProjectsList();
-
+	render().updateProjectsList(allProjects.getProjects());
 
 	const projectFormContainer = document.querySelector("#new-project");
 	const projectForm = projectFormContainer.querySelector("form");
@@ -71,6 +47,7 @@ function projects() {
 			projectForm.querySelector('#color').value));
 		projectFormContainer.style.display = 'none';
 		projectForm.reset();
+		render().updateProjectsList(allProjects.getProjects());
 		updateProjectsList();
 	});
 };
