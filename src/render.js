@@ -6,10 +6,10 @@ const render = (() => {
 	const tasksList = document.querySelector("#tasks");
 	
 	function bindProjects() {
-		let domProjects = document.querySelectorAll(".project");
+		let domProjects = projectsList.querySelectorAll("li");
 		domProjects.forEach(project => {
 			project.addEventListener("click", function(e) {
-				projects.setgetActiveProject(this.classList[1]);
+				projects.setgetActiveProject(this.className);
 				tasks.setTasks();
 				render.updateTasksList();
 			});
@@ -30,12 +30,13 @@ const render = (() => {
 		let color = document.createElement("div");
 		let name = document.createElement("div");
 
+		li.classList.add(index);
+
 		color.classList.add("color");
 		color.textContent = "●";
 		color.style.color = project.color;
 		
 		name.classList.add("project");
-		name.classList.add(index);
 		name.textContent = project.name;
 	
 		li.append(color, name);
