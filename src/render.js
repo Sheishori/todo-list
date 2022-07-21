@@ -9,7 +9,7 @@ const render = (() => {
 		let domProjects = projectsList.querySelectorAll("li");
 		domProjects.forEach(project => {
 			project.addEventListener("click", function(e) {
-				projects.setgetActiveProject(this.className);
+				projects.setActiveProject(this.className);
 				tasks.setTasks();
 				render.updateTasksList();
 			});

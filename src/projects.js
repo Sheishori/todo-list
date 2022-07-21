@@ -28,7 +28,7 @@ const projects = (() => {
 		return activeProject;
 	}
 
-	function setgetActiveProject(project) {
+	function setActiveProject(project) {
 		activeProject = project;
 	}
 
@@ -52,7 +52,7 @@ const projects = (() => {
 		projects.push(project(name, color));
 	};
 
-	return {getActiveProject, setgetActiveProject, getProjects, getTasks, setTasks, addProject};
+	return {getActiveProject, setActiveProject, getProjects, getTasks, setTasks, addProject};
 })();
 
 export { projects };
