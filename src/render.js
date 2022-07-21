@@ -8,12 +8,14 @@ const render = (() => {
 	function bindProjects() {
 		let domProjects = projectsList.querySelectorAll("li");
 		domProjects.forEach(project => {
-			project.addEventListener("click", function(e) {
-				projects.setActiveProject(this.className);
-				tasks.setTasks();
-				render.updateTasksList();
-			});
+			project.addEventListener("click", openActiveProject);
 		});
+	};
+
+	function openActiveProject(event) {
+		projects.setActiveProject(this.className);
+		tasks.setTasks();
+		render.updateTasksList();
 	};
 
 	function updateProjectsList() {

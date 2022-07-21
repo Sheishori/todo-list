@@ -8,6 +8,12 @@ const projects = (() => {
 				desc: "",
 				due: "",
 				priority: "normal"
+			},
+			{
+				title: "Go shopping",
+				desc: "",
+				due: "",
+				priority: "normal"
 			}]
 		},
 		{
