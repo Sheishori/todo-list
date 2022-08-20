@@ -50,7 +50,7 @@ body {
 	font-family: Roboto, sans-serif;
 }
 
-h1, h2 {
+h1, h2, h3 {
 	font-size: 1.5rem;
 	font-weight: 500;
 }
@@ -192,6 +192,7 @@ li .delete {
 	border: none;
 }
 
+#expand,
 #new-project,
 #new-task {
 	display: none;
@@ -211,6 +212,41 @@ form {
 	text-align: center;
 	padding: 2rem;
 	background-color: white;
+}
+
+form, #expanded-task {
+	text-align: center;
+	padding: 2rem;
+	background-color: white;
+}
+
+#expanded-task {
+	position: relative;
+	text-align: left;
+}
+
+#details {
+	width: min(60vw, 35rem);
+	display: grid;
+	grid-template-columns: auto 4fr;
+	gap: 1rem;
+	margin-top: 1.5rem;
+}
+
+.property-name {
+	font-weight: bold;
+	color: gray;
+}
+
+#expanded-task .close {
+	position: absolute;
+	top: 0.5rem;
+	right: 0.5rem;
+	font-size: 1.5rem;
+	color: gray;
+	background: none;
+	border: none;
+	padding: 0.5rem;
 }
 
 form li {
