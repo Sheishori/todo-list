@@ -18,6 +18,53 @@ const render = (() => {
 		render.updateTasksList();
 	};
 
+	function bindTasks() {
+		let domTasks = tasksList.querySelectorAll("li");
+		domTasks.forEach(task => {
+			task.addEventListener("click", expandTask);
+		});
+	};
+
+	function expandTask(event) {
+		let openTask = tasks.getTaskDetails(this.className);
+		let taskDetailsContainer = document.querySelector("#expand");
+		let expandedTask = document.createElement("div");
+		expandedTask.id = "expanded-task";
+		let domTaskDetails = document.createElement("div");
+		domTaskDetails.id = "details";
+		for (let property in openTask) {
+			if (property === "title") {
+				let taskTitle = document.createElement("h3");
+				taskTitle.classList.add("task-title");
+				taskTitle.textContent = openTask[property];
+				expandedTask.appendChild(taskTitle);
+			} else {
+				let propertyName = document.createElement("span");
+				propertyName.classList.add('property-name');
+				if (property === "desc") {
+					propertyName.textContent = "Description:";
+				}	else {
+					propertyName.textContent = `${property.charAt(0).toUpperCase() + property.slice(1)}: `;
+				};
+				let propertyValue = document.createElement("span");
+				propertyValue.classList.add(property);
+				propertyValue.textContent = openTask[property];
+				domTaskDetails.append(propertyName, propertyValue);
+			};
+		};
+		taskDetailsContainer.appendChild(expandedTask);
+		expandedTask.appendChild(domTaskDetails);
+		taskDetailsContainer.style.display = 'inherit';
+		let close = document.createElement("button");
+		close.classList.add("close");
+		close.textContent = "X";
+		close.addEventListener("click", (e) => {
+			taskDetailsContainer.style.display = 'none';
+			taskDetailsContainer.textContent = "";
+		});
+		domTaskDetails.appendChild(close);
+	};
+
 	function updateProjectsList() {
 		projectsList.textContent = "";
 		let list = projects.getProjects();
@@ -48,12 +95,13 @@ const render = (() => {
 	function updateTasksList() {
 		tasksList.textContent = "";
 		let list = tasks.getTasks();
-		for (let task in list) {
-			_generateTask(list[task]);
+		for (let index in list) {
+			_generateTask(index, list[index]);
 		};
+		bindTasks();
 	};
 
-	function _generateTask(task) {
+	function _generateTask(index, task) {
 		let li = document.createElement("li");
 		let input = document.createElement("input");
 		let label = document.createElement("label");
@@ -61,6 +109,8 @@ const render = (() => {
 		let due = document.createElement("div");
 		let del = document.createElement("div");
 
+		li.classList.add(index);
+		
 		input.type = "checkbox";
 		input.name = task.title;
 		label.setAttribute("for", task.title);

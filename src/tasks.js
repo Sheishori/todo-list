@@ -3,6 +3,14 @@ import { projects } from "./projects"
 const tasks = (() => {
 	let tasks = [];
 
+	function getTaskDetails(taskId) {
+		return tasks[taskId];
+	}
+
+	function saveTaskDetails(taskDetails) {
+		tasks[taskId] = taskDetails;
+	}
+
 	function setTasks() {
 		tasks = projects.getTasks();
 	};
@@ -21,7 +29,7 @@ const tasks = (() => {
 
 	setTasks();
 
-	return {setTasks, getTasks, addTask};
+	return {getTaskDetails, saveTaskDetails, setTasks, getTasks, addTask};
 })();
 
 export { tasks };

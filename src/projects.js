@@ -8,13 +8,13 @@ const projects = (() => {
 					title: "Fill to-do list",
 					desc: "",
 					due: "",
-					priority: "normal"
+					priority: "Normal"
 				},
 				{
 					title: "Go shopping",
 					desc: "",
 					due: "",
-					priority: "normal"
+					priority: "Normal"
 				}
 			]
 		},
@@ -26,7 +26,7 @@ const projects = (() => {
 					title: "Eat bread",
 					desc: "",
 					due: "",
-					priority: "normal"
+					priority: "Normal"
 				}
 			]
 		}
