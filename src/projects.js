@@ -3,28 +3,32 @@ const projects = (() => {
 		{
 			name: "My list",
 			color: "Gray",
-			tasks: [{
-				title: "Fill to-do list",
-				desc: "",
-				due: "",
-				priority: "normal"
-			},
-			{
-				title: "Go shopping",
-				desc: "",
-				due: "",
-				priority: "normal"
-			}]
+			tasks: [
+				{
+					title: "Fill to-do list",
+					desc: "",
+					due: "",
+					priority: "normal"
+				},
+				{
+					title: "Go shopping",
+					desc: "",
+					due: "",
+					priority: "normal"
+				}
+			]
 		},
 		{
 			name: "My list 2",
 			color: "red",
-			tasks: [{
-				title: "Eat bread",
-				desc: "",
-				due: "",
-				priority: "normal"
-			}]
+			tasks: [
+				{
+					title: "Eat bread",
+					desc: "",
+					due: "",
+					priority: "normal"
+				}
+			]
 		}
 	];
 
