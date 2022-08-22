@@ -30,14 +30,27 @@ const render = (() => {
 		let taskDetailsContainer = document.querySelector("#expand");
 		let expandedTask = document.createElement("div");
 		expandedTask.id = "expanded-task";
+		let task = document.createElement("div");
+		task.id = "task";
 		let domTaskDetails = document.createElement("div");
 		domTaskDetails.id = "details";
 		for (let property in openTask) {
-			if (property === "title") {
+			if (property === "state") {
+				let taskState = document.createElement("input");
+				taskState.type = "checkbox";
+				taskState.name = openTask[property];
+				if (openTask.state === "Done") taskState.checked = true;
+				taskState.addEventListener("click", (e) => {
+					if (taskState.checked) tasks.completeTask(this.className[0]);
+					else tasks.undoTask(this.className[0]);
+					render.updateTasksList();
+				});
+				task.appendChild(taskState);
+			} else if (property === "title") {
 				let taskTitle = document.createElement("h3");
 				taskTitle.classList.add("task-title");
 				taskTitle.textContent = openTask[property];
-				expandedTask.appendChild(taskTitle);
+				task.appendChild(taskTitle);
 			} else {
 				let propertyName = document.createElement("span");
 				propertyName.classList.add('property-name');
@@ -58,7 +71,7 @@ const render = (() => {
 			};
 		};
 		taskDetailsContainer.appendChild(expandedTask);
-		expandedTask.appendChild(domTaskDetails);
+		expandedTask.append(task, domTaskDetails);
 		taskDetailsContainer.style.display = 'inherit';
 		let close = document.createElement("button");
 		close.classList.add("close");

@@ -225,6 +225,16 @@ form, #expanded-task {
 	text-align: left;
 }
 
+#task {
+	display: flex;
+	gap: 0.7rem;
+}
+
+#task input {
+	width: 1rem;
+	margin: 0;
+}
+
 #details {
 	width: min(60vw, 35rem);
 	display: grid;
