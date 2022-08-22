@@ -35,9 +35,13 @@ const tasks = (() => {
 		projects.setTasks(tasks);
 	};
 
+	function deleteTask(index) {
+		tasks.splice(index, 1);
+	};
+
 	setTasks();
 
-	return {getTaskDetails, saveTaskDetails, completeTask, undoTask, setTasks, getTasks, addTask};
+	return {getTaskDetails, saveTaskDetails, completeTask, undoTask, setTasks, getTasks, addTask, deleteTask};
 })();
 
 export { tasks };

@@ -146,6 +146,12 @@ const render = (() => {
 			else tasks.undoTask(index);
 		});
 
+		del.addEventListener("click", (e) => {
+			e.stopPropagation();
+			tasks.deleteTask(index);
+			render.updateTasksList();
+		});
+
 		if (task.priority === "Urgent") {
 			li.classList.add("urgent");
 		} else if (task.priority === "High") {
