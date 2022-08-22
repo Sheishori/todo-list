@@ -26,7 +26,7 @@ const render = (() => {
 	};
 
 	function expandTask(event) {
-		let openTask = tasks.getTaskDetails(this.className);
+		let openTask = tasks.getTaskDetails(this.className[0]);
 		let taskDetailsContainer = document.querySelector("#expand");
 		let expandedTask = document.createElement("div");
 		expandedTask.id = "expanded-task";
