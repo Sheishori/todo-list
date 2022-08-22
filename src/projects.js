@@ -53,10 +53,6 @@ const projects = (() => {
 		return projects[activeProject].tasks;
 	}
 
-	function setTasks(tasks) {
-		projects[activeProject].tasks = tasks;
-	}
-
 	function addProject(name, color) {
 		const project = (name, color) => {
 			let tasks = [];
@@ -65,7 +61,7 @@ const projects = (() => {
 		projects.push(project(name, color));
 	};
 
-	return {getActiveProject, setActiveProject, getProjects, getTasks, setTasks, addProject};
+	return {getActiveProject, setActiveProject, getProjects, getTasks, addProject};
 })();
 
 export { projects };

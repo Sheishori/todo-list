@@ -32,7 +32,6 @@ const tasks = (() => {
 			return {state, title, desc, due, priority};
 		};
 		tasks.push(task(state, title, desc, due, priority));
-		projects.setTasks(tasks);
 	};
 
 	function deleteTask(index) {
