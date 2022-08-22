@@ -18,6 +18,33 @@ const render = (() => {
 		render.updateTasksList();
 	};
 
+	function updateProjectsList() {
+		projectsList.textContent = "";
+		let list = projects.getProjects();
+		for (let index in list) {
+			_generateProject(index, list[index]);
+		};
+		bindProjects();
+	};
+	
+	function _generateProject(index, project) {
+		let li = document.createElement("li");
+		let color = document.createElement("div");
+		let name = document.createElement("div");
+
+		li.classList.add(index);
+
+		color.classList.add("color");
+		color.textContent = "●";
+		color.style.color = project.color;
+		
+		name.classList.add("project");
+		name.textContent = project.name;
+	
+		li.append(color, name);
+		projectsList.appendChild(li);
+	};
+
 	function bindTasks() {
 		let domTasks = tasksList.querySelectorAll("li");
 		domTasks.forEach(task => {
@@ -81,33 +108,6 @@ const render = (() => {
 			taskDetailsContainer.textContent = "";
 		});
 		domTaskDetails.appendChild(close);
-	};
-
-	function updateProjectsList() {
-		projectsList.textContent = "";
-		let list = projects.getProjects();
-		for (let index in list) {
-			_generateProject(index, list[index]);
-		};
-		bindProjects();
-	};
-	
-	function _generateProject(index, project) {
-		let li = document.createElement("li");
-		let color = document.createElement("div");
-		let name = document.createElement("div");
-
-		li.classList.add(index);
-
-		color.classList.add("color");
-		color.textContent = "●";
-		color.style.color = project.color;
-		
-		name.classList.add("project");
-		name.textContent = project.name;
-	
-		li.append(color, name);
-		projectsList.appendChild(li);
 	};
 
 	function updateTasksList() {
