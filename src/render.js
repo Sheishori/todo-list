@@ -83,7 +83,8 @@ const render = (() => {
 
 	function renderOpenTask() {
 		taskDetailsContainer.textContent = "";
-		let openTask = tasks.getTaskDetails(tasks.getActiveTaskId());
+		let activeTask = tasks.getActiveTaskId();
+		let openTask = tasks.getTaskDetails(activeTask);
 		let expandedTask = document.createElement("div");
 		expandedTask.id = "expanded-task";
 		let task = document.createElement("div");
@@ -97,8 +98,8 @@ const render = (() => {
 				taskState.name = openTask[property];
 				if (openTask.state === "Done") taskState.checked = true;
 				taskState.addEventListener("click", (e) => {
-					if (taskState.checked) tasks.completeTask(this.className[0]);
-					else tasks.undoTask(this.className[0]);
+					if (taskState.checked) tasks.completeTask(activeTask);
+					else tasks.undoTask(activeTask);
 					render.updateTasksList();
 				});
 				task.appendChild(taskState);
