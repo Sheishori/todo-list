@@ -2,6 +2,15 @@ import { projects } from "./projects"
 
 const tasks = (() => {
 	let tasks = [];
+	let activeTaskId = "";
+
+	function setActiveTaskId(id){
+		activeTaskId = id;
+	};
+
+	function getActiveTaskId(){
+		return activeTaskId;
+	};
 
 	function getTaskDetails(taskId) {
 		return tasks[taskId];
@@ -40,7 +49,7 @@ const tasks = (() => {
 
 	setTasks();
 
-	return {getTaskDetails, saveTaskDetails, completeTask, undoTask, setTasks, getTasks, addTask, deleteTask};
+	return {setActiveTaskId, getActiveTaskId, getTaskDetails, saveTaskDetails, completeTask, undoTask, setTasks, getTasks, addTask, deleteTask};
 })();
 
 export { tasks };

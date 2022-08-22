@@ -4,6 +4,7 @@ import { tasks } from "./tasks";
 const render = (() => {
 	const projectsList = document.querySelector("#projects");
 	const tasksList = document.querySelector("#tasks");
+	const taskDetailsContainer = document.querySelector("#expand");
 	
 	function bindProjects() {
 		let domProjects = projectsList.querySelectorAll("li");
@@ -75,9 +76,14 @@ const render = (() => {
 		});
 	};
 
-	function expandTask(event) {
-		let openTask = tasks.getTaskDetails(this.className[0]);
-		let taskDetailsContainer = document.querySelector("#expand");
+	function expandTask() {
+		tasks.setActiveTaskId(this.className[0]);
+		renderOpenTask();
+	};
+
+	function renderOpenTask() {
+		taskDetailsContainer.textContent = "";
+		let openTask = tasks.getTaskDetails(tasks.getActiveTaskId());
 		let expandedTask = document.createElement("div");
 		expandedTask.id = "expanded-task";
 		let task = document.createElement("div");
@@ -120,6 +126,14 @@ const render = (() => {
 				domTaskDetails.append(propertyName, propertyValue);
 			};
 		};
+		let edit = document.createElement("button");
+		edit.classList.add("edit");
+		edit.textContent = "Edit";
+		edit.addEventListener("click", (e) => {
+			const taskFormContainer = document.querySelector("#task-form");
+			taskFormContainer.classList.add("edit");
+		});
+		task.appendChild(edit);
 		taskDetailsContainer.appendChild(expandedTask);
 		expandedTask.append(task, domTaskDetails);
 		taskDetailsContainer.style.display = 'inherit';
@@ -204,7 +218,7 @@ const render = (() => {
 		tasksList.appendChild(li);
 	};
 
-	return {updateProjectsList, updateTasksList};
+	return {updateProjectsList, updateTasksList, renderOpenTask};
 })();
 
 export { render };
