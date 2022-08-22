@@ -194,7 +194,8 @@ li .delete {
 
 #expand,
 #new-project,
-#new-task {
+#task-form,
+.save {
 	display: none;
 }
 
