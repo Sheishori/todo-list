@@ -49,8 +49,22 @@ const render = (() => {
 		let currentProject = document.querySelector("#current-project");
 		currentProject.textContent = "";
 		let projectName = document.createElement("h2");
-		projectName.textContent = projects.getProjects()[projects.getActiveProject()].name;
+		let currentProjectName = projects.getProjects()[projects.getActiveProject()].name;
+		projectName.textContent = currentProjectName;
+		projectName.setAttribute("contentEditable", "true");
 		currentProject.appendChild(projectName);
+		projectName.addEventListener("blur", () => {
+			projects.changeProjectName(projects.getActiveProject(), projectName.textContent);
+			updateProjectsList();
+			updateTasksList();
+		});
+
+		projectName.addEventListener("keypress", (e) => {
+			if (e.keyCode === 13 ) {
+				e.preventDefault();
+				projectName.blur();
+			}
+		});
 	};
 
 	function bindTasks() {
@@ -167,7 +181,6 @@ const render = (() => {
 
 		label.addEventListener("keypress", (e) => {
 			if (e.keyCode === 13 ) {
-				console.log("y");
 				e.preventDefault();
 				label.blur();
 			}
