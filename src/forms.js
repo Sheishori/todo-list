@@ -45,6 +45,7 @@ const forms = (() => {
 	taskForm.addEventListener("submit", (e) => {
 		e.preventDefault();
 		tasks.addTask(
+			"",
 			taskForm.querySelector('#title').value,
 			taskForm.querySelector('#desc').value,
 			taskForm.querySelector('#due').value,

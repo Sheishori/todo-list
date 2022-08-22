@@ -118,6 +118,7 @@ const render = (() => {
 		
 		input.type = "checkbox";
 		input.name = task.title;
+		if (task.state === "Done") input.checked = true;
 		label.setAttribute("for", task.title);
 		label.textContent = task.title;
 		edit.classList.add("edit");
@@ -125,6 +126,12 @@ const render = (() => {
 		if (task.due) due.textContent = "Due " + task.due;
 		del.classList.add("delete");
 		del.textContent = "X";
+
+		input.addEventListener("click", (e) => {
+			e.stopPropagation();
+			if (input.checked) tasks.completeTask(index);
+			else tasks.undoTask(index);
+		});
 
 		if (task.priority === "Urgent") {
 			li.classList.add("urgent");

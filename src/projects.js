@@ -5,12 +5,14 @@ const projects = (() => {
 			color: "Gray",
 			tasks: [
 				{
+					state: "",
 					title: "Fill to-do list",
 					desc: "",
 					due: "",
 					priority: "Normal"
 				},
 				{
+					state: "",
 					title: "Go shopping",
 					desc: "",
 					due: "",
@@ -23,6 +25,7 @@ const projects = (() => {
 			color: "red",
 			tasks: [
 				{
+					state: "",
 					title: "Eat bread",
 					desc: "",
 					due: "",
