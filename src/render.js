@@ -40,7 +40,7 @@ const render = (() => {
 		
 		name.classList.add("project");
 		name.textContent = project.name;
-	
+
 		li.append(color, name);
 		projectsList.appendChild(li);
 	};
@@ -133,6 +133,7 @@ const render = (() => {
 		input.name = task.title;
 		if (task.state === "Done") input.checked = true;
 		label.setAttribute("for", task.title);
+		label.setAttribute("contentEditable", "true");
 		label.textContent = task.title;
 		edit.classList.add("edit");
 		due.classList.add("due");
@@ -144,6 +145,23 @@ const render = (() => {
 			e.stopPropagation();
 			if (input.checked) tasks.completeTask(index);
 			else tasks.undoTask(index);
+		});
+
+		label.addEventListener("click", (e) => {
+			e.stopPropagation();
+		});
+		
+		label.addEventListener("blur", () => {
+			task.title = label.textContent;
+			render.updateTasksList();
+		});
+
+		label.addEventListener("keypress", (e) => {
+			if (e.keyCode === 13 ) {
+				console.log("y");
+				e.preventDefault();
+				label.blur();
+			}
 		});
 
 		del.addEventListener("click", (e) => {
