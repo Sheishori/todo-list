@@ -49,6 +49,11 @@ const render = (() => {
 				let propertyValue = document.createElement("span");
 				propertyValue.classList.add(property);
 				propertyValue.textContent = openTask[property];
+				if (openTask[property] === "Urgent") {
+					propertyValue.classList.add("urgent");
+				} else if (openTask[property] === "High") {
+					propertyValue.classList.add("high");
+				};
 				domTaskDetails.append(propertyName, propertyValue);
 			};
 		};
