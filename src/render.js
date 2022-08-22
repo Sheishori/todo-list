@@ -54,7 +54,7 @@ const render = (() => {
 		projectName.setAttribute("contentEditable", "true");
 		currentProject.appendChild(projectName);
 		projectName.addEventListener("blur", () => {
-			projects.changeProjectName(projects.getActiveProject(), projectName.textContent);
+			projectName.textContent = currentProjectName;
 			updateProjectsList();
 			updateTasksList();
 		});
@@ -62,6 +62,7 @@ const render = (() => {
 		projectName.addEventListener("keypress", (e) => {
 			if (e.keyCode === 13 ) {
 				e.preventDefault();
+				projects.changeProjectName(projects.getActiveProject(), projectName.textContent);
 				projectName.blur();
 			}
 		});
@@ -175,13 +176,14 @@ const render = (() => {
 		});
 		
 		label.addEventListener("blur", () => {
-			task.title = label.textContent;
+			label.textContent = task.title;
 			render.updateTasksList();
 		});
 
 		label.addEventListener("keypress", (e) => {
 			if (e.keyCode === 13 ) {
 				e.preventDefault();
+				task.title = label.textContent;
 				label.blur();
 			}
 		});
