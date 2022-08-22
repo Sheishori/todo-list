@@ -45,6 +45,14 @@ const render = (() => {
 		projectsList.appendChild(li);
 	};
 
+	function renderProjectName() {
+		let currentProject = document.querySelector("#current-project");
+		currentProject.textContent = "";
+		let projectName = document.createElement("h2");
+		projectName.textContent = projects.getProjects()[projects.getActiveProject()].name;
+		currentProject.appendChild(projectName);
+	};
+
 	function bindTasks() {
 		let domTasks = tasksList.querySelectorAll("li");
 		domTasks.forEach(task => {
@@ -111,6 +119,7 @@ const render = (() => {
 	};
 
 	function updateTasksList() {
+		renderProjectName();
 		tasksList.textContent = "";
 		let list = tasks.getTasks();
 		for (let index in list) {
