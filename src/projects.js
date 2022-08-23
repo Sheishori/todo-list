@@ -54,6 +54,9 @@ const projects = (() => {
 	};
 
 	function getTasks() {
+		if (!projects[activeProject]) {
+			return 0;
+		}
 		return projects[activeProject].tasks;
 	};
 
@@ -65,7 +68,14 @@ const projects = (() => {
 		projects.push(project(name, color));
 	};
 
-	return {getActiveProject, setActiveProject, changeProjectName, getProjects, getTasks, addProject};
+	function deleteProject(index) {
+		projects.splice(index, 1);
+		if (index < activeProject) {
+			activeProject -= 1;
+		};
+	};
+
+	return {getActiveProject, setActiveProject, changeProjectName, getProjects, getTasks, addProject, deleteProject};
 })();
 
 export { projects };

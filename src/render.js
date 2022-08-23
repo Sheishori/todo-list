@@ -33,6 +33,7 @@ const render = (() => {
 		let li = document.createElement("li");
 		let color = document.createElement("div");
 		let name = document.createElement("div");
+		let del = document.createElement("div");
 
 		li.classList.add(index);
 
@@ -43,13 +44,30 @@ const render = (() => {
 		name.classList.add("project");
 		name.textContent = project.name;
 
-		li.append(color, name);
+		del.classList.add("delete-project");
+		del.textContent = "X";
+
+		del.addEventListener("click", (e) => {
+			e.stopPropagation();
+			projects.deleteProject(index);
+			tasks.setTasks();
+			updateProjectsList();
+			updateTasksList();
+		});
+
+		li.append(color, name, del);
 		projectsList.appendChild(li);
 	};
 
 	function renderProjectName() {
 		let currentProject = document.querySelector("#current-project");
+		const newTaskButton = document.querySelector("#new-task-button");
 		currentProject.textContent = "";
+		if (projects.getProjects() === undefined || projects.getProjects().length == 0) {
+			newTaskButton.style.display = "none";
+			return;
+		};
+		newTaskButton.style.display = "inherit";
 		let projectName = document.createElement("h2");
 		let currentProjectName = projects.getProjects()[projects.getActiveProject()].name;
 		projectName.textContent = currentProjectName;

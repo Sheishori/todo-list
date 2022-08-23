@@ -104,6 +104,11 @@ li {
 	cursor: pointer;
 }
 
+.delete-project {
+	margin-left: auto;
+	color: rgb(182, 182, 182);
+}
+
 #new-project-button {
 	font-size: 1.2rem;
 	text-align: center;

@@ -32,6 +32,7 @@ const forms = (() => {
 		projectFormContainer.style.display = 'none';
 		projectForm.reset();
 		render.updateProjectsList();
+		render.updateTasksList();
 	});
 
 	function callback(mutationList, observer) {
