@@ -16,7 +16,7 @@ const render = (() => {
 	function openActiveProject(event) {
 		projects.setActiveProject(this.className);
 		tasks.setTasks();
-		render.updateTasksList();
+		updateTasksList();
 	};
 
 	function updateProjectsList() {
@@ -102,7 +102,7 @@ const render = (() => {
 				taskState.addEventListener("click", (e) => {
 					if (taskState.checked) tasks.completeTask(activeTask);
 					else tasks.undoTask(activeTask);
-					render.updateTasksList();
+					updateTasksList();
 				});
 				task.appendChild(taskState);
 			} else if (property === "title") {
@@ -194,7 +194,7 @@ const render = (() => {
 		
 		label.addEventListener("blur", () => {
 			label.textContent = task.title;
-			render.updateTasksList();
+			updateTasksList();
 		});
 
 		label.addEventListener("keypress", (e) => {
@@ -210,7 +210,7 @@ const render = (() => {
 		del.addEventListener("click", (e) => {
 			e.stopPropagation();
 			tasks.deleteTask(index);
-			render.updateTasksList();
+			updateTasksList();
 		});
 
 		if (task.priority === "Urgent") {
