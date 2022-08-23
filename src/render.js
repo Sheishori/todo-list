@@ -7,14 +7,14 @@ const render = (() => {
 	const tasksList = document.querySelector("#tasks");
 	const taskDetailsContainer = document.querySelector("#expand");
 	
-	function bindProjects() {
+	function _bindProjects() {
 		let domProjects = projectsList.querySelectorAll("li");
 		domProjects.forEach(project => {
-			project.addEventListener("click", openActiveProject);
+			project.addEventListener("click", _openActiveProject);
 		});
 	};
 
-	function openActiveProject(event) {
+	function _openActiveProject(event) {
 		projects.setActiveProject(this.className);
 		tasks.setTasks();
 		updateTasksList();
@@ -26,7 +26,7 @@ const render = (() => {
 		for (let index in list) {
 			_generateProject(index, list[index]);
 		};
-		bindProjects();
+		_bindProjects();
 	};
 	
 	function _generateProject(index, project) {
@@ -59,7 +59,7 @@ const render = (() => {
 		projectsList.appendChild(li);
 	};
 
-	function renderProjectName() {
+	function _renderProjectName() {
 		let currentProject = document.querySelector("#current-project");
 		const newTaskButton = document.querySelector("#new-task-button");
 		currentProject.textContent = "";
@@ -90,14 +90,14 @@ const render = (() => {
 		});
 	};
 
-	function bindTasks() {
+	function _bindTasks() {
 		let domTasks = tasksList.querySelectorAll("li");
 		domTasks.forEach(task => {
-			task.addEventListener("click", expandTask);
+			task.addEventListener("click", _expandTask);
 		});
 	};
 
-	function expandTask() {
+	function _expandTask() {
 		tasks.setActiveTaskId(this.className[0]);
 		renderOpenTask();
 	};
@@ -174,13 +174,13 @@ const render = (() => {
 	};
 
 	function updateTasksList() {
-		renderProjectName();
+		_renderProjectName();
 		tasksList.textContent = "";
 		let list = tasks.getTasks();
 		for (let index in list) {
 			_generateTask(index, list[index]);
 		};
-		bindTasks();
+		_bindTasks();
 	};
 
 	function _generateTask(index, task) {
