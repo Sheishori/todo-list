@@ -41,10 +41,12 @@ const tasks = (() => {
 			return {state, title, desc, due, priority};
 		};
 		tasks.push(task(state, title, desc, due, priority));
+		projects.saveProjects();
 	};
 
 	function deleteTask(index) {
 		tasks.splice(index, 1);
+		projects.saveProjects();
 	};
 
 	setTasks();

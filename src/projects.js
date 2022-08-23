@@ -43,6 +43,7 @@ const projects = (() => {
 
 	function setActiveProject(project) {
 		activeProject = project;
+		localStorage.activeProject = JSON.stringify(activeProject);
 	};
 
 	function changeProjectName(index, projectName) {
@@ -66,6 +67,7 @@ const projects = (() => {
 			return {name, color, tasks};
 		};
 		projects.push(project(name, color));
+		saveProjects();
 	};
 
 	function deleteProject(index) {
@@ -73,9 +75,24 @@ const projects = (() => {
 		if (index < activeProject) {
 			activeProject -= 1;
 		};
+		saveProjects();
 	};
 
-	return {getActiveProject, setActiveProject, changeProjectName, getProjects, getTasks, addProject, deleteProject};
+	function _loadProjects() {
+		if (localStorage.projects) {
+			projects = JSON.parse(localStorage.projects);
+		};
+		if (localStorage.activeProject) {
+			activeProject = JSON.parse(localStorage.activeProject);
+		};
+	};
+
+	function saveProjects() {
+		localStorage.projects = JSON.stringify(projects);
+	};
+
+	_loadProjects();
+	return {getActiveProject, setActiveProject, changeProjectName, getProjects, getTasks, addProject, deleteProject, saveProjects};
 })();
 
 export { projects };
