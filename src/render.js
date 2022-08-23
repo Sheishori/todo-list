@@ -63,7 +63,9 @@ const render = (() => {
 		projectName.addEventListener("keypress", (e) => {
 			if (e.keyCode === 13 ) {
 				e.preventDefault();
-				projects.changeProjectName(projects.getActiveProject(), projectName.textContent);
+				if (projectName.textContent) {
+					projects.changeProjectName(projects.getActiveProject(), projectName.textContent);
+				};
 				projectName.blur();
 			}
 		});
@@ -198,7 +200,9 @@ const render = (() => {
 		label.addEventListener("keypress", (e) => {
 			if (e.keyCode === 13 ) {
 				e.preventDefault();
-				task.title = label.textContent;
+				if (label.textContent) {
+					task.title = label.textContent;
+				};
 				label.blur();
 			}
 		});
