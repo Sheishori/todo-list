@@ -1,5 +1,6 @@
-import { projects } from "./projects"
+import { projects } from "./projects";
 import { tasks } from "./tasks";
+import { format } from 'date-fns';
 
 const render = (() => {
 	const projectsList = document.querySelector("#projects");
@@ -120,7 +121,11 @@ const render = (() => {
 				};
 				let propertyValue = document.createElement("span");
 				propertyValue.classList.add(property);
-				propertyValue.textContent = openTask[property];
+				if (property === "due" && openTask[property]) {
+					propertyValue.textContent = format(new Date(openTask[property]), "PPPP");
+				} else {
+					propertyValue.textContent = openTask[property];
+				};
 				if (openTask[property] === "Urgent") {
 					propertyValue.classList.add("urgent");
 				} else if (openTask[property] === "High") {
@@ -178,7 +183,7 @@ const render = (() => {
 		label.textContent = task.title;
 		edit.classList.add("edit");
 		due.classList.add("due");
-		if (task.due) due.textContent = "Due " + task.due;
+		if (task.due) due.textContent = "Due " + format(new Date(task.due), "PP");
 		del.classList.add("delete");
 		del.textContent = "X";
 
